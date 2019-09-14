@@ -44,7 +44,7 @@ app
   });
 
 app.use(
-  '/s3',
+  '/api/s3',
   require('react-s3-uploader/s3router')({
     bucket: 'redi-connect-profile-avatars',
     region: 'eu-west-1', // optional
@@ -74,7 +74,11 @@ app.start = function(httpOnly) {
     server = http.createServer(app);
   }
   server.listen(app.get('port'), function() {
-    var baseUrl = (httpOnly ? 'http://' : 'https://') + app.get('host') + ':' + app.get('port');
+    var baseUrl =
+      (httpOnly ? 'http://' : 'https://') +
+      app.get('host') +
+      ':' +
+      app.get('port');
     app.emit('started', baseUrl);
     console.log('LoopBack server listening @ %s%s', baseUrl, '/');
     if (app.get('loopback-component-explorer')) {
