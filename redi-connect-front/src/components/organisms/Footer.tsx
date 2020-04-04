@@ -1,7 +1,21 @@
 import React from "react";
-import { Columns, Container, Section } from "react-bulma-components";
+import { Columns, Container, Section, Content } from "react-bulma-components";
 import Icons from "../atoms/MediaIcons";
 import "./Footer.scss";
+
+const links = [
+  { name: "Contact", url: "https://www.redi-school.org/imprint" },
+  { name: "FAQ", url: "/" },
+  {
+    name: "Transparency",
+    url: "https://www.redi-school.org/berlin-transparency/",
+  },
+  { name: "Cookie policy", url: "/" },
+  {
+    name: "Data privacy policy",
+    url: "https://www.redi-school.org/data-privacy-policy/",
+  },
+];
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -11,54 +25,34 @@ const Footer = () => {
       <Container>
         <Section>
           <Columns>
-            <Columns.Column className="is-hidden-mobile">
+            <Columns.Column responsive={{ mobile: { hide: { value: true } } }}>
               <p>
                 <a href="https://www.redi-school.org/">ReDI School Website</a>
               </p>
               <p>&copy; {year} By ReDI School</p>
             </Columns.Column>
-            <Columns.Column size={4} className="is-hidden-tablet">
+            <Columns.Column
+              size={4}
+              responsive={{ tablet: { hide: { value: true } } }}
+            >
               <p className="is-size-5">Follow us</p>
               <Icons />
             </Columns.Column>
             <Columns.Column size={6}>
-              <p>
-                <a
-                  href="https://www.redi-school.org/imprint"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Contact
-                </a>
-              </p>
-              <p>
-                <a href="/" target="_blank" rel="noopener noreferrer">
-                  FAQ
-                </a>
-              </p>
-              <p>
-                <a
-                  href="https://www.redi-school.org/berlin-transparency/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Transparency
-                </a>
-              </p>
-              <p>
-                <a href="/">Cookie policy</a>
-              </p>
-              <p>
-                <a
-                  href="https://www.redi-school.org/data-privacy-policy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Data privacy policy
-                </a>
-              </p>
+              {links.map((link) => (
+                <Content key={link.url}>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    {link.name}
+                  </a>
+                </Content>
+              ))}
             </Columns.Column>
-            <Columns.Column className="is-hidden-mobile is-narrow">
+            <Columns.Column
+              mobile={{
+                size: "is-narrow",
+              }}
+              responsive={{ mobile: { hide: { value: true } } }}
+            >
               <p>Follow us</p>
               <Icons />
             </Columns.Column>
@@ -66,7 +60,7 @@ const Footer = () => {
               mobile={{
                 size: "four-fifths",
               }}
-              className="is-hidden-tablet"
+              responsive={{ tablet: { hide: { value: true } } }}
             >
               <span>
                 <a href="https://www.redi-school.org/">ReDI School Website</a>

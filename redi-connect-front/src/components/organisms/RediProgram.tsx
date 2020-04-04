@@ -45,17 +45,22 @@ const RediProgram = () => {
           headline="What our Mentorship Program is all about ..."
         />
         <Columns>
-          {programSteps.map(step => (
+          {programSteps.map((step) => (
             <Columns.Column className="has-text-centered" key={step.content}>
               <Image src={step.image} />
               <Heading
                 size={4}
                 renderAs="h3"
-                className="is-hidden-tablet is-marginless"
+                className="is-marginless"
+                responsive={{ tablet: { hide: { value: true } } }}
+                style={{ paddingTop: 12 }}
               >
                 {step.headline}
               </Heading>
-              <Level className="is-size-4 is-size-5-mobile has-text-black">
+              <Level
+                className="is-size-4 is-size-5-mobile has-text-black"
+                style={{ marginBottom: 24, marginTop: 8 }}
+              >
                 {step.content}
               </Level>
             </Columns.Column>

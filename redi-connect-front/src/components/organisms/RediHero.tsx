@@ -21,8 +21,8 @@ const RediHero = () => (
             <Heading size={1} className="hero-column-heading">
               Welcome to ReDI Connect
             </Heading>
-            <Columns.Column className="is-hidden-tablet">
-              <img src={teamMobile} alt="team" className="hero-column-img" />
+            <Columns.Column responsive={{ tablet: { hide: { value: true } } }}>
+              <img src={teamMobile} alt="team" />
             </Columns.Column>
             <Content className="hero-column-content">
               Are you ready for the future of work? We connect thriving
@@ -31,8 +31,11 @@ const RediHero = () => (
             </Content>
             <Button size="large" text="sign-up now!" />
           </Columns.Column>
-          <Columns.Column offset={1} className="is-hidden-mobile">
-            <img src={team} alt="team" className="hero-column-img" />
+          <Columns.Column
+            offset={1}
+            responsive={{ mobile: { hide: { value: true } } }}
+          >
+            <img src={team} alt="team" />
           </Columns.Column>
         </Columns>
       </Section>
